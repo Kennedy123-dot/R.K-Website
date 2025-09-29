@@ -142,7 +142,7 @@
         const html = document.documentElement;
 
         // Check saved preference
-        if (localStorage.getItem('theme') === 'dark' ||
+        if (localStorage.getItem('theme') === 'dark' || 
             (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             html.classList.add('dark');
             icon.classList.replace('fa-moon', 'fa-sun');
@@ -158,35 +158,18 @@
                 icon.classList.replace('fa-sun', 'fa-moon');
             }
         });
+    </script>
 
-         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-         anchor.addEventListener('click', function (e) {
-         e.preventDefault();
-         document.querySelector(this.getAttribute('href')).scrollIntoView({
-         behavior: 'smooth'
+    <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
         });
     });
-    </script>
-    <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
-    @csrf
-    <!-- your fields -->
+</script>
 
-    @if ($errors->any())
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-        <ul class="list-disc pl-5">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-@if (session('success'))
-    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-        {{ session('success') }}
-    </div>
-@endif
-</form>
 </body>
 </html>

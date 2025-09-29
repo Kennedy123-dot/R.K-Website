@@ -18,6 +18,8 @@ class PortfolioSeeder extends Seeder
             ['name' => 'Vue.js / React', 'proficiency' => 80],
             ['name' => 'UI/UX Design', 'proficiency' => 75],
             ['name' => 'MySQL', 'proficiency' => 90],
+            ['name' => 'Python', 'proficiency' => 90],
+            ['name' => 'HTML and CSS', 'proficiency' => 90],
         ]);
 
         Service::insert([

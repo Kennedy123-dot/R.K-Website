@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-        $table->string('github_id')->nullable()->unique();
-        $table->string('google_id')->nullable()->unique();
+            $table->string('github_id')->nullable()->unique();
+            $table->string('google_id')->nullable()->unique();
         });
     }
 

@@ -11,9 +11,9 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required',
             'email' => 'required|email',
-            'message' => 'required|string',
+            'message' => 'required',
         ]);
 
         Message::create($request->all());
@@ -21,6 +21,6 @@ class ContactController extends Controller
         // Optional: Send email
         // Mail::to('admin@site.com')->send(new ContactMail($request));
 
-        return back()->with('success', 'Your message has been sent successfully! I will get back to you soon.');
+        return back()->with('success', 'Message sent successfully!');
     }
 }

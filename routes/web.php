@@ -24,8 +24,6 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     // Projects
     Route::resource('projects', ProjectController::class);
-
-    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 });
 
 // Auth Routes (Breeze)
