@@ -5,6 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Message;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Mailables\Address;
+
+// After saving message
+Mail::raw($request->message, function ($message) use ($request) {
+    $message->from($request->email, $request->name)
+            ->to(config('mail.from.address'))
+            ->subject('New Contact Form Message');
+});
 
 class ContactController extends Controller
 {

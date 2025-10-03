@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->text('message');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('github_id')->nullable()->unique();
+            $table->string('github_token')->nullable();
         });
     }
 
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['github_id', 'github_token']);
+        });
     }
 };
